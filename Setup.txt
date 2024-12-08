@@ -1,0 +1,2 @@
+In NuGet Package Manager Console:
+Install-Package System.Data.SQLite
