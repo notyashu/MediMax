@@ -28,12 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.loginBtn = new BasicControls.btn();
+            this.txtBox2 = new BasicControls.txtBox();
             this.lbl2 = new BasicControls.lbl();
             this.lbl1 = new BasicControls.lbl();
             this.txtBox1 = new BasicControls.txtBox();
-            this.txtBox2 = new BasicControls.txtBox();
-            this.loginBtn = new BasicControls.btn();
             this.SuspendLayout();
+            // 
+            // loginBtn
+            // 
+            this.loginBtn.Location = new System.Drawing.Point(376, 167);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(75, 23);
+            this.loginBtn.TabIndex = 2;
+            this.loginBtn.Text = "Login";
+            this.loginBtn.UseVisualStyleBackColor = false;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            // 
+            // txtBox2
+            // 
+            this.txtBox2.Location = new System.Drawing.Point(162, 106);
+            this.txtBox2.Name = "txtBox2";
+            this.txtBox2.Size = new System.Drawing.Size(289, 20);
+            this.txtBox2.TabIndex = 1;
             // 
             // lbl2
             // 
@@ -61,23 +78,6 @@
             this.txtBox1.Size = new System.Drawing.Size(289, 20);
             this.txtBox1.TabIndex = 0;
             // 
-            // txtBox2
-            // 
-            this.txtBox2.Location = new System.Drawing.Point(162, 106);
-            this.txtBox2.Name = "txtBox2";
-            this.txtBox2.Size = new System.Drawing.Size(289, 20);
-            this.txtBox2.TabIndex = 1;
-            // 
-            // loginBtn
-            // 
-            this.loginBtn.Location = new System.Drawing.Point(376, 167);
-            this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(75, 23);
-            this.loginBtn.TabIndex = 2;
-            this.loginBtn.Text = "Login";
-            this.loginBtn.UseVisualStyleBackColor = false;
-            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
-            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,6 +95,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

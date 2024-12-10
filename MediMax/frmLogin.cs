@@ -9,10 +9,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BasicControls;
 
 namespace MediMax
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : frm
     {
         public frmLogin()
         {
@@ -64,6 +65,9 @@ namespace MediMax
             }
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }
