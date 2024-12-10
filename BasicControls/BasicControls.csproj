@@ -79,6 +79,12 @@
     <Compile Include="lbl.Designer.cs">
       <DependentUpon>lbl.cs</DependentUpon>
     </Compile>
+    <Compile Include="menuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="menuStrip.Designer.cs">
+      <DependentUpon>menuStrip.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="txtBox.cs">
       <SubType>Component</SubType>
