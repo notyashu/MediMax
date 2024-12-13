@@ -1,4 +1,4 @@
-﻿namespace MediMax
+﻿namespace MainForms
 {
     partial class frmMain
     {

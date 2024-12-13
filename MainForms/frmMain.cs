@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BasicControls;
 
-namespace MediMax
+namespace MainForms
 {
     public partial class frmMain : frm
     {

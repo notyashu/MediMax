@@ -41,6 +41,10 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=9.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.9.0.0\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -67,6 +71,12 @@
     <Compile Include="btn.Designer.cs">
       <DependentUpon>btn.cs</DependentUpon>
     </Compile>
+    <Compile Include="cmbBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="cmbBox.Designer.cs">
+      <DependentUpon>cmbBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,7 +95,19 @@
     <Compile Include="menuStrip.Designer.cs">
       <DependentUpon>menuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="pnl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="pnl.Designer.cs">
+      <DependentUpon>pnl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rdoBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rdoBtn.Designer.cs">
+      <DependentUpon>rdoBtn.cs</DependentUpon>
+    </Compile>
     <Compile Include="txtBox.cs">
       <SubType>Component</SubType>
     </Compile>
