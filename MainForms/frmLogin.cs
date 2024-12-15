@@ -2,9 +2,9 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Windows.Forms;
 using BasicControls;
 using Models;
+using Utilities;
 
 namespace MainForms
 {
@@ -23,7 +23,7 @@ namespace MainForms
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please enter both Username and Password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clDialog.msgBox("Please enter both Username and Password.", "E");
                 return;
             }
 
@@ -72,13 +72,13 @@ namespace MainForms
                     }
                     else
                     {
-                        MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clDialog.msgBox("Invalid username or password.", "E");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Login Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clDialog.msgBox($"Login Error: {ex.Message}", "E");
             }
         }
     }

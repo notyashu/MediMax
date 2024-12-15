@@ -2,7 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
-using System.Windows.Forms;
+using Utilities;
 
 namespace Models
 {
@@ -28,8 +28,7 @@ namespace Models
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Database Initialization Error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clDialog.msgBox($"Database Initialization Error: {ex.Message}", "E");
             }
         }
 

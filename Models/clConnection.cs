@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Linq;
 using System.Management;
 using System.Windows.Forms;
+using Utilities;
 
 namespace Models
 {
@@ -61,12 +62,7 @@ namespace Models
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Error saving connection settings: {ex.Message}",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                clDialog.msgBox($"Error saving connection settings: {ex.Message}", "E");
             }
         }
 
@@ -137,13 +133,7 @@ namespace Models
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Connection Test Failed:\n" +
-                    $"Error: {ex.Message}\n" +
-                    $"Inner Exception: {ex.InnerException?.Message}",
-                    "Connection Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                    $"Connection Test Failed:\n Error: {ex.Message}\n" , "E");
                 return false;
             }
         }

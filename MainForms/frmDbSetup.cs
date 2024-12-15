@@ -4,6 +4,7 @@ using System.IO;
 using System.Windows.Forms;
 using BasicControls;
 using Models;
+using Utilities;
 
 namespace MainForms
 {
@@ -82,8 +83,7 @@ namespace MainForms
             {
                 if (string.IsNullOrWhiteSpace(txtSQLitePath.Text))
                 {
-                    MessageBox.Show("Please select a SQLite database path.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clDialog.msgBox("Please select a SQLite database path.", "E");
                     return;
                 }
 
@@ -98,8 +98,7 @@ namespace MainForms
             {
                 if (string.IsNullOrWhiteSpace(cboSqlInstances.Text))
                 {
-                    MessageBox.Show("Please select SQL instance.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clDialog.msgBox("Please select SQL instance.", "E");
                     return;
                 }
 
@@ -120,15 +119,14 @@ namespace MainForms
                     if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
                         string.IsNullOrWhiteSpace(txtPassword.Text))
                     {
-                        MessageBox.Show("Please enter SQL authentication credentials.",
-                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clDialog.msgBox("Please enter SQL authentication credentials.", "E");
                         return;
                     }
 
                     connectionString = new SqlConnectionStringBuilder
                     {
                         DataSource = cboSqlInstances.Text,
-                        InitialCatalog = "MediMaxDB",
+                        InitialCatalog = "master",
                         UserID = txtUsername.Text,
                         Password = txtPassword.Text,
                         IntegratedSecurity = false
@@ -151,22 +149,19 @@ namespace MainForms
                     // Initialize database (ensure this method exists and is appropriate)
                     clInteractDb.InitializeDatabase();
 
-                    MessageBox.Show("Connection successful and database initialized!",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clDialog.msgBox("Connection successful and database initialized!", "I");
 
                     DialogResult = DialogResult.OK;
                     Close();
                 }
                 else
                 {
-                    MessageBox.Show("Connection test failed. Please check your connection details.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    clDialog.msgBox("Connection test failed. Please check your connection details.", "E");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Detailed Error: {ex.Message}\n{ex.StackTrace}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                clDialog.msgBox($"Detailed Error: {ex.Message}\n{ex.StackTrace}", "E");
             }
         }
 
