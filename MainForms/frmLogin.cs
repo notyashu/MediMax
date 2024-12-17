@@ -36,8 +36,8 @@ namespace MainForms
 
                     // Prepare query based on database type
                     string query = clConnection.CurrentDatabaseType == DatabaseType.SQLite
-                        ? "SELECT UserName FROM Users WHERE UserName = @username AND Pass = @password"
-                        : "SELECT UserName FROM Users WHERE UserName = @username AND Pass = @password";
+                        ? "SELECT Username FROM Users WHERE Username = @username AND Password = @password"
+                        : "USE MediMaxDb; SELECT Username FROM Users WHERE Username = @username AND Password = @password";
 
                     IDbCommand cmd;
                     IDataParameter usernameParam, passwordParam;

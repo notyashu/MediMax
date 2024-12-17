@@ -19,33 +19,40 @@ namespace MainForms
         private void InitializeForm()
         {
             PopulateSqlInstances();
-            rbSQLite.Checked = true;
+            cmbDbType.SelectedIndex = 0; // Select SQLite by default
             rbWindowsAuth.Checked = true;
         }
 
         private void PopulateSqlInstances()
         {
             string[] instances = clConnection.DetectSqlInstances();
-            cboSqlInstances.Items.Clear();
-            cboSqlInstances.Items.AddRange(instances);
+            cmbSqlInstances.Items.Clear();
+            cmbSqlInstances.Items.AddRange(instances);
 
             if (instances.Length > 0)
-                cboSqlInstances.SelectedIndex = 0;
+                cmbSqlInstances.SelectedIndex = 0;
         }
 
-        private void rbSQLite_CheckedChanged(object sender, EventArgs e)
+        private void cmbDbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            pnlSQLExpress.Enabled = !rbSQLite.Checked;
-            if (rbSQLite.Checked)
+            switch (cmbDbType.SelectedIndex)
             {
-                txtSQLitePath.Text = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-                    "MediMax", "medimaxdb.sqlite");
+                case 0: // SQLite
+                    pnlSQLExpress.Enabled = false;
+                    txtSQLitePath.Text = Path.Combine(Directory.GetCurrentDirectory(), "MediMaxDb.sqlite");
+                    //txtSQLitePath.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"MediMax", "medimaxdb.sqlite");
+                    break;
+
+                case 1: // SQL Express
+                    pnlSQLExpress.Enabled = true;
+                    txtSQLitePath.Text = string.Empty;
+                    break;
+
+                default:
+                    pnlSQLExpress.Enabled = false;
+                    txtSQLitePath.Text = string.Empty;
+                    break;
             }
-        }
-        private void rbSQLExpress_CheckedChanged(object sender, EventArgs e)
-        {
-            pnlSQLExpress.Enabled = rbSQLExpress.Checked;
         }
 
         private void rbSqlAuth_CheckedChanged(object sender, EventArgs e)
@@ -65,7 +72,7 @@ namespace MainForms
             {
                 saveFileDialog.Filter = "SQLite Database Files (*.sqlite)|*.sqlite";
                 saveFileDialog.Title = "Select SQLite Database Location";
-                saveFileDialog.FileName = "medimaxdb.sqlite";
+                saveFileDialog.FileName = "MediMaxDb.sqlite";
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -79,7 +86,7 @@ namespace MainForms
             DatabaseType dbType;
             AuthenticationType authType;
 
-            if (rbSQLite.Checked)
+            if (cmbDbType.SelectedIndex == 0)
             {
                 if (string.IsNullOrWhiteSpace(txtSQLitePath.Text))
                 {
@@ -96,7 +103,7 @@ namespace MainForms
             }
             else
             {
-                if (string.IsNullOrWhiteSpace(cboSqlInstances.Text))
+                if (string.IsNullOrWhiteSpace(cmbSqlInstances.Text))
                 {
                     clDialog.msgBox("Please select SQL instance.", "E");
                     return;
@@ -107,7 +114,7 @@ namespace MainForms
                 {
                     connectionString = new SqlConnectionStringBuilder
                     {
-                        DataSource = cboSqlInstances.Text,
+                        DataSource = cmbSqlInstances.Text,
                         InitialCatalog = "master",
                         IntegratedSecurity = true
                     }.ConnectionString;
@@ -125,7 +132,7 @@ namespace MainForms
 
                     connectionString = new SqlConnectionStringBuilder
                     {
-                        DataSource = cboSqlInstances.Text,
+                        DataSource = cmbSqlInstances.Text,
                         InitialCatalog = "master",
                         UserID = txtUsername.Text,
                         Password = txtPassword.Text,
@@ -164,6 +171,5 @@ namespace MainForms
                 clDialog.msgBox($"Detailed Error: {ex.Message}\n{ex.StackTrace}", "E");
             }
         }
-
     }
 }

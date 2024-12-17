@@ -67,14 +67,14 @@
             // 
             this.txtUsername.BackColor = System.Drawing.Color.White;
             this.txtUsername.Location = new System.Drawing.Point(162, 63);
-            this.txtUsername.Name = "txtBox1";
+            this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(289, 20);
             this.txtUsername.TabIndex = 0;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(162, 106);
-            this.txtPassword.Name = "txtBox2";
+            this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(289, 20);
             this.txtPassword.TabIndex = 1;
             // 

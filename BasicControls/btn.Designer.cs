@@ -28,8 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.SuspendLayout();
+            // 
+            // btn
+            // 
+            this.Size = new System.Drawing.Size(800, 450);
+            this.UseVisualStyleBackColor = false;
+            this.ResumeLayout(false);
+
         }
 
         #endregion

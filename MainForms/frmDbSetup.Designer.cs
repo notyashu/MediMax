@@ -12,8 +12,8 @@ namespace MainForms
         private lbl lblDbType, lblSqlInstances, lblUsername, lblPassword, lblSQLitePath, lblAuthType;
         private btn btnTest, btnBrowse;
         private txtBox txtUsername, txtPassword, txtSQLitePath;
-        private rdoBtn rbSQLite, rbSQLExpress, rbWindowsAuth, rbSqlAuth;
-        private cmbBox cboSqlInstances;
+        private rdoBtn rbWindowsAuth, rbSqlAuth;
+        private cmbBox cmbSqlInstances;
         private pnl pnlSQLExpress, pnlAuthType;
 
         protected override void Dispose(bool disposing)
@@ -27,24 +27,24 @@ namespace MainForms
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblDbType = new BasicControls.lbl();
             this.lblSqlInstances = new BasicControls.lbl();
             this.lblUsername = new BasicControls.lbl();
             this.lblPassword = new BasicControls.lbl();
             this.lblSQLitePath = new BasicControls.lbl();
             this.lblAuthType = new BasicControls.lbl();
-            this.rbSQLite = new BasicControls.rdoBtn();
-            this.rbSQLExpress = new BasicControls.rdoBtn();
-            this.rbWindowsAuth = new BasicControls.rdoBtn();
-            this.rbSqlAuth = new BasicControls.rdoBtn();
+            this.rbWindowsAuth = new BasicControls.rdoBtn(this.components);
+            this.rbSqlAuth = new BasicControls.rdoBtn(this.components);
             this.txtUsername = new BasicControls.txtBox();
             this.txtPassword = new BasicControls.txtBox();
             this.txtSQLitePath = new BasicControls.txtBox();
-            this.cboSqlInstances = new BasicControls.cmbBox();
+            this.cmbDbType = new BasicControls.cmbBox(this.components);
+            this.cmbSqlInstances = new BasicControls.cmbBox(this.components);
             this.btnTest = new BasicControls.btn();
             this.btnBrowse = new BasicControls.btn();
-            this.pnlSQLExpress = new BasicControls.pnl();
-            this.pnlAuthType = new BasicControls.pnl();
+            this.pnlSQLExpress = new BasicControls.pnl(this.components);
+            this.pnlAuthType = new BasicControls.pnl(this.components);
             this.pnlSQLExpress.SuspendLayout();
             this.pnlAuthType.SuspendLayout();
             this.SuspendLayout();
@@ -97,24 +97,6 @@ namespace MainForms
             this.lblAuthType.TabIndex = 2;
             this.lblAuthType.Text = "Authentication Type:";
             // 
-            // rbSQLite
-            // 
-            this.rbSQLite.Location = new System.Drawing.Point(200, 20);
-            this.rbSQLite.Name = "rbSQLite";
-            this.rbSQLite.Size = new System.Drawing.Size(100, 25);
-            this.rbSQLite.TabIndex = 1;
-            this.rbSQLite.Text = "SQLite";
-            this.rbSQLite.CheckedChanged += new System.EventHandler(this.rbSQLite_CheckedChanged);
-            // 
-            // rbSQLExpress
-            // 
-            this.rbSQLExpress.Location = new System.Drawing.Point(300, 20);
-            this.rbSQLExpress.Name = "rbSQLExpress";
-            this.rbSQLExpress.Size = new System.Drawing.Size(100, 25);
-            this.rbSQLExpress.TabIndex = 2;
-            this.rbSQLExpress.Text = "SQL Express";
-            this.rbSQLExpress.CheckedChanged += new System.EventHandler(this.rbSQLExpress_CheckedChanged);
-            // 
             // rbWindowsAuth
             // 
             this.rbWindowsAuth.Location = new System.Drawing.Point(0, 0);
@@ -155,12 +137,23 @@ namespace MainForms
             this.txtSQLitePath.Size = new System.Drawing.Size(300, 20);
             this.txtSQLitePath.TabIndex = 4;
             // 
-            // cboSqlInstances
+            // cmbDbType
             // 
-            this.cboSqlInstances.Location = new System.Drawing.Point(200, 20);
-            this.cboSqlInstances.Name = "cbSqlInstances";
-            this.cboSqlInstances.Size = new System.Drawing.Size(300, 21);
-            this.cboSqlInstances.TabIndex = 1;
+            this.cmbDbType.Items.AddRange(new object[] {
+            "SQLite",
+            "SQL Express"});
+            this.cmbDbType.Location = new System.Drawing.Point(200, 20);
+            this.cmbDbType.Name = "cmbDbType";
+            this.cmbDbType.Size = new System.Drawing.Size(300, 21);
+            this.cmbDbType.TabIndex = 1;
+            this.cmbDbType.SelectedIndexChanged += new System.EventHandler(this.cmbDbType_SelectedIndexChanged);
+            // 
+            // cmbSqlInstances
+            // 
+            this.cmbSqlInstances.Location = new System.Drawing.Point(200, 20);
+            this.cmbSqlInstances.Name = "cmbSqlInstances";
+            this.cmbSqlInstances.Size = new System.Drawing.Size(300, 21);
+            this.cmbSqlInstances.TabIndex = 1;
             // 
             // btnTest
             // 
@@ -169,6 +162,7 @@ namespace MainForms
             this.btnTest.Size = new System.Drawing.Size(100, 25);
             this.btnTest.TabIndex = 7;
             this.btnTest.Text = "Test Connection";
+            this.btnTest.UseVisualStyleBackColor = false;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // btnBrowse
@@ -177,13 +171,15 @@ namespace MainForms
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(80, 25);
             this.btnBrowse.TabIndex = 5;
+            this.btnBrowse.TabStop = false;
             this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // pnlSQLExpress
             // 
             this.pnlSQLExpress.Controls.Add(this.lblSqlInstances);
-            this.pnlSQLExpress.Controls.Add(this.cboSqlInstances);
+            this.pnlSQLExpress.Controls.Add(this.cmbSqlInstances);
             this.pnlSQLExpress.Controls.Add(this.lblAuthType);
             this.pnlSQLExpress.Controls.Add(this.pnlAuthType);
             this.pnlSQLExpress.Controls.Add(this.lblUsername);
@@ -209,8 +205,7 @@ namespace MainForms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(640, 382);
             this.Controls.Add(this.lblDbType);
-            this.Controls.Add(this.rbSQLite);
-            this.Controls.Add(this.rbSQLExpress);
+            this.Controls.Add(this.cmbDbType);
             this.Controls.Add(this.lblSQLitePath);
             this.Controls.Add(this.txtSQLitePath);
             this.Controls.Add(this.btnBrowse);
@@ -226,5 +221,7 @@ namespace MainForms
             this.PerformLayout();
 
         }
+
+        private cmbBox cmbDbType;
     }
 }

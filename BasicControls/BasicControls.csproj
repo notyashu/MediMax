@@ -152,6 +152,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="btn.resx">
+      <DependentUpon>btn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cmbBox.resx">
+      <DependentUpon>cmbBox.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

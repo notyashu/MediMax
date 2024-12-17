@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clDataTypes.cs" />
     <Compile Include="clDialog.cs" />
     <Compile Include="clIniFile.cs" />
     <Compile Include="Memory.cs" />

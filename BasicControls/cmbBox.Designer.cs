@@ -28,7 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // cmbBox
+            // 
+            this.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ResumeLayout(false);
+
         }
 
         #endregion

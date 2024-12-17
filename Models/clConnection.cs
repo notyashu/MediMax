@@ -150,7 +150,7 @@ namespace Models
                     ManagementObjectSearcher searcher = new ManagementObjectSearcher(
                         "SELECT * FROM Win32_Service WHERE (Name LIKE 'MSSQL$%' OR Name = 'MSSQLSERVER')");
 
-                    foreach (ManagementObject service in searcher.Get())
+                    foreach (ManagementObject service in searcher.Get().Cast<ManagementObject>())
                     {
                         string serviceName = service["Name"].ToString();
                         string instanceName = serviceName == "MSSQLSERVER"
@@ -168,13 +168,13 @@ namespace Models
                 }
 
                 // Add some default instances
-                instances.UnionWith(new[]
-                {
-                    @".\SQLEXPRESS",
-                    @"(localdb)\MSSQLLocalDB",
-                    @"localhost\SQLEXPRESS",
-                    @"MSSQLSERVER"
-                });
+                //instances.UnionWith(new[]
+                //{
+                //    @".\SQLEXPRESS",
+                //    @"(localdb)\MSSQLLocalDB",
+                //    @"localhost\SQLEXPRESS",
+                //    @"MSSQLSERVER"
+                //});
 
                 return instances.ToArray();
             }
