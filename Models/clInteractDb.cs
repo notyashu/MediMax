@@ -38,7 +38,7 @@ namespace Models
 
             string createUsersTable = @"
             CREATE TABLE IF NOT EXISTS Users (
-                UserId INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserId INTEGER PRIMARY KEY,
                 Username TEXT NOT NULL UNIQUE,
                 Password TEXT NOT NULL,
                 IsAdmin BOOLEAN NOT NULL
@@ -46,9 +46,9 @@ namespace Models
 
             string createConfigsTable = @"
             CREATE TABLE IF NOT EXISTS Configs (
-                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Id INTEGER PRIMARY KEY,
                 nVal REAL,
-                cVal CHAR(1),
+                cVal TEXT,
                 sVal TEXT,
                 dVal DATE,
                 dtVal DATETIME,
@@ -57,7 +57,7 @@ namespace Models
 
             string createFirmsTable = @"
             CREATE TABLE IF NOT EXISTS Firms (
-                FirmId INTEGER PRIMARY KEY AUTOINCREMENT,
+                FirmId INTEGER PRIMARY KEY,
                 FirmType INTEGER,
                 Name TEXT,
                 CP TEXT,
@@ -101,8 +101,8 @@ namespace Models
             );";
 
             string insertAdminQuery = @"
-            INSERT OR IGNORE INTO Users (Username, Password, IsAdmin)
-            VALUES ('a', '000', 1);";
+            INSERT OR IGNORE INTO Users (UserId, Username, Password, IsAdmin)
+            VALUES (1, 'a', '000', 1);";
 
             ExecuteSQLiteCommand(connection, enableForeignKeys);
             ExecuteSQLiteCommand(connection, createUsersTable);
@@ -121,7 +121,7 @@ namespace Models
             string createUsersTable = @"
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Users' AND xtype='U')
             CREATE TABLE Users (
-                UserId INT IDENTITY(1,1) PRIMARY KEY,
+                UserId PRIMARY KEY,
                 Username VARCHAR(20) NOT NULL UNIQUE,
                 Password VARCHAR(20) NOT NULL,
                 IsAdmin BIT NOT NULL
@@ -132,9 +132,9 @@ namespace Models
             string createConfigsTable = @"
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Configs' AND xtype='U')
             CREATE TABLE Configs (
-                Id INT IDENTITY(1,1) PRIMARY KEY,
-                nVal FLOAT,
-                cVal CHAR(1),
+                Id INT PRIMARY KEY,
+                nVal DECIMAL(18,2),
+                cVal VARCHAR(1),
                 sVal VARCHAR(100),
                 dVal DATE,
                 dtVal DATETIME,
@@ -144,7 +144,7 @@ namespace Models
             string createFirmsTable = @"
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Firms' AND xtype='U')
             CREATE TABLE Firms (
-                FirmId INT IDENTITY(1,1) PRIMARY KEY,
+                FirmId INT PRIMARY KEY,
                 FirmType SMALLINT NOT NULL,
                 Name VARCHAR(100) NOT NULL,
                 CP VARCHAR(50) NOT NULL,
@@ -164,7 +164,7 @@ namespace Models
                 IFSC VARCHAR(20) NOT NULL,
                 AcNo VARCHAR(20) NOT NULL,
                 GSTIN VARCHAR(20) NOT NULL,
-                RegType CHAR(1) NOT NULL,
+                RegType VARCHAR(1) NOT NULL,
                 PAN VARCHAR(20) NOT NULL,
                 TAN VARCHAR(20) NOT NULL,
                 CIN VARCHAR(20) NOT NULL,
@@ -190,8 +190,8 @@ namespace Models
 
             string insertAdminQuery = @"
             IF NOT EXISTS (SELECT 1 FROM Users WHERE UserName = 'a')
-            INSERT INTO Users (Username, Password, IsAdmin)
-            VALUES ('a', '000', 1);";
+            INSERT INTO Users (UserId, Username, Password, IsAdmin)
+            VALUES (1, 'a', '000', 1);";
 
             ExecuteSQLExpressCommand(connection, createDatabaseQuery);
             ExecuteSQLExpressCommand(connection, changeDatabase);

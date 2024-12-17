@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clConnection.cs" />
+    <Compile Include="clDatatypes.cs" />
     <Compile Include="clInteractDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

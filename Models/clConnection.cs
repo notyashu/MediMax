@@ -133,7 +133,7 @@ namespace Models
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Connection Test Failed:\n Error: {ex.Message}\n" , "E");
+                    $"Connection Test Failed:\n Error: {ex.Message}\n", "E");
                 return false;
             }
         }
