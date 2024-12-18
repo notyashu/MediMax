@@ -8,9 +8,9 @@
             {
                 query = query.Replace("_V_", "TEXT NOT NULL");
                 query = query.Replace("_D_", "DATE NOT NULL");
-                query = query.Replace("_T_", "DATETIME NOT NULL");
+                query = query.Replace("_DT_", "DATETIME NOT NULL");
                 query = query.Replace("_B_", "BOOLEAN NOT NULL");
-                query = query.Replace("_S_", "INTEGER NOT NULL");
+                query = query.Replace("_SI_", "INTEGER NOT NULL");
                 query = query.Replace("_I_", "INTEGER NOT NULL");
                 query = query.Replace("_N_", "REAL NOT NULL");
                 query = query.Replace("[", "");
@@ -31,9 +31,9 @@
             {
                 query = query.Replace("_V_", "VARCHAR");
                 query = query.Replace("_D_", "DATE NOT NULL");
-                query = query.Replace("_T_", "DATETIME NOT NULL");
+                query = query.Replace("_DT_", "DATETIME NOT NULL");
                 query = query.Replace("_B_", "BIT NOT NULL");
-                query = query.Replace("_S_", "SMALLINT NOT NULL");
+                query = query.Replace("_SI_", "SMALLINT NOT NULL");
                 query = query.Replace("_I_", "INT NOT NULL");
                 query = query.Replace("_N_", "DECIMAL");
                 query = query.Replace("?", ",");
