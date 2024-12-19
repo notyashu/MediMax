@@ -27,7 +27,7 @@ namespace MainForms
             }
 
             // Proceed to main application or login
-            Application.Run(new frmLogin());
+            Application.Run(new frmAddFirm());
         }
     }
 }

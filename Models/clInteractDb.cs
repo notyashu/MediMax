@@ -107,11 +107,11 @@ namespace Models
             );");
 
             string insertAdminQuery = @"
-            INSERT INTO Users (UserId, Username, Password, IsAdmin)
+            INSERT OR REPLACE INTO Users (UserId, Username, Password, IsAdmin)
             VALUES (1, 'a', '000', 1);";
 
             string insertStateQuery = @"
-            INSERT INTO States (StateId, State)
+            INSERT OR IGNORE INTO States (StateId, State)
             VALUES
                 ('01', 'Jammu and Kashmir'),
                 ('02', 'Himachal Pradesh'),
