@@ -109,6 +109,12 @@
     <Compile Include="cmbBox.Designer.cs">
       <DependentUpon>cmbBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="dateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="dateTimePicker.Designer.cs">
+      <DependentUpon>dateTimePicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cmbBox.resx">
       <DependentUpon>cmbBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dateTimePicker.resx">
+      <DependentUpon>dateTimePicker.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
