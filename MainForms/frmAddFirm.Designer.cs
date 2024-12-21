@@ -151,7 +151,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1010, 622);
+            this.btnSave.Location = new System.Drawing.Point(1010, 602);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
@@ -161,7 +161,7 @@
             // 
             // btnModify
             // 
-            this.btnModify.Location = new System.Drawing.Point(907, 622);
+            this.btnModify.Location = new System.Drawing.Point(907, 602);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(75, 23);
             this.btnModify.TabIndex = 8;
@@ -908,7 +908,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1173, 684);
+            this.ClientSize = new System.Drawing.Size(1194, 645);
             this.Controls.Add(this.grpFinancialYear);
             this.Controls.Add(this.grpRegistrations);
             this.Controls.Add(this.grpBankingDetails);
