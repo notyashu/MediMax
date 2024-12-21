@@ -77,7 +77,7 @@ namespace Models
                 IFSC _V_[20],
                 AcNo _V_[20],
                 GSTIN _V_[20],
-                RegType _V_[1],
+                RegType _SI_,
                 PAN _V_[20],
                 TAN _V_[20],
                 CIN _V_[20],
@@ -193,7 +193,7 @@ namespace Models
             string createFirmsTable = clDatatypes.ConvertQuery(@"
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Firms' AND xtype='U')
             CREATE TABLE Firms (
-                FirmId _SI_ PRIMARY KEY,
+                FirmId _SI_,
                 FirmType _SI_,
                 Name _V_[100],
                 CP _V_[50],
@@ -213,7 +213,7 @@ namespace Models
                 IFSC _V_[20],
                 AcNo _V_[20],
                 GSTIN _V_[20],
-                RegType _V_[1],
+                RegType _SI_,
                 PAN _V_[20],
                 TAN _V_[20],
                 CIN _V_[20],
@@ -322,6 +322,34 @@ namespace Models
         {
             using (var command = new SqlCommand(query, (SqlConnection)connection))
                 command.ExecuteNonQuery();
+        }
+
+        public string GetNextId(string tableName, string columnName)
+        {
+            string newId = "1"; // Default to 1 if the table is empty
+            using (var connection = clConnection.GetConnection())
+            {
+                try
+                {
+                    connection.Open();
+
+                    // Query to get the maximum value in the specified column
+                    string query = $@"SELECT MAX(CAST({columnName} AS INTEGER)) FROM {tableName}";
+                    using (var cmd = new SQLiteCommand(query, (SQLiteConnection)connection))
+                    {
+                        object result = cmd.ExecuteScalar();
+                        int maxId = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+
+                        // Increment maxId to get the new ID
+                        newId = (maxId + 1).ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    clDialog.msgBox($"Error generating new ID: {ex.Message}", "E");
+                }
+            }
+            return newId;
         }
     }
 }
